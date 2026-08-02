@@ -1,4 +1,4 @@
-import type { TriggerId } from '../domain/types';
+import type { TriggerId } from "../domain/types";
 
 /**
  * Something that starts a cleanup run on its own.

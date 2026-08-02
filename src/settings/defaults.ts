@@ -1,4 +1,4 @@
-import type { AutoRemoveSettings, FolderRule } from '../domain/types';
+import type { AutoRemoveSettings, FolderRule } from "../domain/types";
 
 /**
  * The TTL applied to a note that opts in without naming one.
@@ -12,10 +12,10 @@ export const CURRENT_SCHEMA_VERSION = 1;
 export const DEFAULT_SETTINGS: AutoRemoveSettings = {
   schemaVersion: CURRENT_SCHEMA_VERSION,
   defaultTtlDays: DEFAULT_TTL_DAYS,
-  defaultAction: 'trash',
-  defaultMoveDestination: '',
+  defaultAction: "trash",
+  defaultMoveDestination: "",
   folderRules: [],
-  triggers: ['startup'],
+  triggers: ["startup"],
 };
 
 /** A blank folder rule for the settings UI to hand to the user. */
@@ -23,10 +23,10 @@ export function createFolderRule(): FolderRule {
   return {
     id: createRuleId(),
     enabled: true,
-    folder: '',
+    folder: "",
     ttlDays: DEFAULT_TTL_DAYS,
-    action: 'trash',
-    moveDestination: '',
+    action: "trash",
+    moveDestination: "",
     ignorePatterns: [],
   };
 }
@@ -39,7 +39,7 @@ export function createFolderRule(): FolderRule {
  * while the user is adding a rule.
  */
 function createRuleId(): string {
-  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
     return crypto.randomUUID();
   }
   return `rule-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;

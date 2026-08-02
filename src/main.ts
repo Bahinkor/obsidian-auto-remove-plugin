@@ -1,21 +1,21 @@
-import { Plugin } from 'obsidian';
-import { VaultFileActions } from './adapters/vault-file-actions';
-import { VaultFileRepository } from './adapters/vault-file-repository';
-import { WorkspaceOpenFileTracker } from './adapters/workspace-open-files';
-import { registerCommands } from './commands';
-import { createPolicyResolver } from './domain/policy/resolver-factory';
-import type { TriggerId } from './domain/types';
-import { ActionExecutor } from './services/action-executor';
-import { CleanupService } from './services/cleanup-service';
-import { ExpirationScanner } from './services/expiration-scanner';
-import { PendingActions } from './services/pending-actions';
-import { SettingsStore } from './settings/settings-store';
-import { StartupTrigger } from './triggers/startup-trigger';
-import { TriggerRegistry } from './triggers/trigger-registry';
-import type { TriggerFactory } from './triggers/trigger-registry';
-import { reportOutcome } from './ui/notifications';
-import { CleanupPreviewModal } from './ui/preview-modal';
-import { AutoRemoveSettingTab } from './ui/settings-tab';
+import { Plugin } from "obsidian";
+import { VaultFileActions } from "./adapters/vault-file-actions";
+import { VaultFileRepository } from "./adapters/vault-file-repository";
+import { WorkspaceOpenFileTracker } from "./adapters/workspace-open-files";
+import { registerCommands } from "./commands";
+import { createPolicyResolver } from "./domain/policy/resolver-factory";
+import type { TriggerId } from "./domain/types";
+import { ActionExecutor } from "./services/action-executor";
+import { CleanupService } from "./services/cleanup-service";
+import { ExpirationScanner } from "./services/expiration-scanner";
+import { PendingActions } from "./services/pending-actions";
+import { SettingsStore } from "./settings/settings-store";
+import { StartupTrigger } from "./triggers/startup-trigger";
+import { TriggerRegistry } from "./triggers/trigger-registry";
+import type { TriggerFactory } from "./triggers/trigger-registry";
+import { reportOutcome } from "./ui/notifications";
+import { CleanupPreviewModal } from "./ui/preview-modal";
+import { AutoRemoveSettingTab } from "./ui/settings-tab";
 
 /**
  * Auto Remove — expires files by time to live, then trashes or moves them.
@@ -74,7 +74,7 @@ export default class AutoRemovePlugin extends Plugin {
   private createTriggerFactories(cleanup: CleanupService): Map<TriggerId, TriggerFactory> {
     return new Map<TriggerId, TriggerFactory>([
       [
-        'startup',
+        "startup",
         () =>
           new StartupTrigger(this.app.workspace, () => {
             void cleanup.run().then((outcome) => reportOutcome(outcome, false));

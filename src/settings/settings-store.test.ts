@@ -1,7 +1,7 @@
-import { describe, expect, it, vi } from 'vitest';
-import { DEFAULT_TTL_DAYS } from './defaults';
-import { SettingsStore } from './settings-store';
-import type { SettingsPersistence } from './settings-store';
+import { describe, expect, it, vi } from "vitest";
+import { DEFAULT_TTL_DAYS } from "./defaults";
+import { SettingsStore } from "./settings-store";
+import type { SettingsPersistence } from "./settings-store";
 
 function fakePersistence(initial: unknown = undefined): SettingsPersistence & { saved: unknown[] } {
   const saved: unknown[] = [];
@@ -14,18 +14,18 @@ function fakePersistence(initial: unknown = undefined): SettingsPersistence & { 
   };
 }
 
-describe('SettingsStore', () => {
-  it('starts from validated defaults when nothing is persisted', async () => {
+describe("SettingsStore", () => {
+  it("starts from validated defaults when nothing is persisted", async () => {
     const store = await SettingsStore.load(fakePersistence());
     expect(store.settings.defaultTtlDays).toBe(DEFAULT_TTL_DAYS);
   });
 
-  it('validates persisted data on the way in', async () => {
-    const store = await SettingsStore.load(fakePersistence({ defaultTtlDays: 'soon' }));
+  it("validates persisted data on the way in", async () => {
+    const store = await SettingsStore.load(fakePersistence({ defaultTtlDays: "soon" }));
     expect(store.settings.defaultTtlDays).toBe(DEFAULT_TTL_DAYS);
   });
 
-  it('persists the whole settings object on update', async () => {
+  it("persists the whole settings object on update", async () => {
     const persistence = fakePersistence();
     const store = await SettingsStore.load(persistence);
 
@@ -35,7 +35,7 @@ describe('SettingsStore', () => {
     expect(persistence.saved).toEqual([store.settings]);
   });
 
-  it('replaces the settings object rather than mutating it', async () => {
+  it("replaces the settings object rather than mutating it", async () => {
     const store = await SettingsStore.load(fakePersistence());
     const before = store.settings;
 
@@ -45,7 +45,7 @@ describe('SettingsStore', () => {
     expect(before.defaultTtlDays).toBe(DEFAULT_TTL_DAYS);
   });
 
-  it('notifies subscribers with the new settings', async () => {
+  it("notifies subscribers with the new settings", async () => {
     const store = await SettingsStore.load(fakePersistence());
     const listener = vi.fn();
     store.subscribe(listener);
@@ -55,7 +55,7 @@ describe('SettingsStore', () => {
     expect(listener).toHaveBeenCalledWith(store.settings);
   });
 
-  it('stops notifying once unsubscribed', async () => {
+  it("stops notifying once unsubscribed", async () => {
     const store = await SettingsStore.load(fakePersistence());
     const listener = vi.fn();
     store.subscribe(listener)();

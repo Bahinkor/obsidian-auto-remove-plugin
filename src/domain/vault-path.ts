@@ -15,18 +15,20 @@
  */
 export function normalizeFolder(path: string): string {
   return path
-    .split('/')
+    .split("/")
     .map((segment) => segment.trim())
     .filter((segment) => segment.length > 0)
-    .join('/');
+    .join("/");
 }
 
 /** The vault root, expressed the way Obsidian expresses it. */
-export const VAULT_ROOT = '';
+export const VAULT_ROOT = "";
 
 /** Splits a path into its segments. The root yields an empty array. */
 export function segments(path: string): string[] {
-  return normalizeFolder(path).split('/').filter((segment) => segment.length > 0);
+  return normalizeFolder(path)
+    .split("/")
+    .filter((segment) => segment.length > 0);
 }
 
 /** Number of path segments; used to rank folder rules by specificity. */
@@ -36,13 +38,13 @@ export function depth(folder: string): number {
 
 /** The final segment of a path, e.g. `'Inbox/note.md'` → `'note.md'`. */
 export function basename(path: string): string {
-  const index = path.lastIndexOf('/');
+  const index = path.lastIndexOf("/");
   return index === -1 ? path : path.slice(index + 1);
 }
 
 /** The containing folder of a path, or {@link VAULT_ROOT} for a top-level file. */
 export function parentFolder(path: string): string {
-  const index = path.lastIndexOf('/');
+  const index = path.lastIndexOf("/");
   return index === -1 ? VAULT_ROOT : path.slice(0, index);
 }
 
@@ -51,7 +53,7 @@ export function joinPath(...parts: string[]): string {
   return parts
     .map(normalizeFolder)
     .filter((part) => part.length > 0)
-    .join('/');
+    .join("/");
 }
 
 /**
@@ -80,14 +82,14 @@ export function relativeToFolder(path: string, folder: string): string | null {
 /** The extension of a file path in lower case, without the dot. */
 export function extensionOf(path: string): string {
   const name = basename(path);
-  const index = name.lastIndexOf('.');
-  if (index <= 0) return '';
+  const index = name.lastIndexOf(".");
+  if (index <= 0) return "";
   return name.slice(index + 1).toLowerCase();
 }
 
 /** Splits a file name into its stem and its extension suffix (including the dot). */
 export function splitExtension(name: string): { stem: string; suffix: string } {
-  const index = name.lastIndexOf('.');
-  if (index <= 0) return { stem: name, suffix: '' };
+  const index = name.lastIndexOf(".");
+  if (index <= 0) return { stem: name, suffix: "" };
   return { stem: name.slice(0, index), suffix: name.slice(index) };
 }

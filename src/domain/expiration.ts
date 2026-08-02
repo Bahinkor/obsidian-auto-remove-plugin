@@ -1,5 +1,5 @@
-import { MILLISECONDS_PER_DAY } from './types';
-import type { ExpirationPolicy, ExpiredFile, FileSnapshot } from './types';
+import { MILLISECONDS_PER_DAY } from "./types";
+import type { ExpirationPolicy, ExpiredFile, FileSnapshot } from "./types";
 
 /**
  * The whole of the TTL arithmetic.
@@ -52,8 +52,8 @@ export function parseTtlDays(value: unknown): number | null {
 }
 
 function coerceToNumber(value: unknown): number {
-  if (typeof value === 'number') return value;
-  if (typeof value !== 'string') return NaN;
+  if (typeof value === "number") return value;
+  if (typeof value !== "string") return NaN;
   const trimmed = value.trim();
   // `Number('')` is 0, which would silently mean "expire immediately".
   return trimmed.length === 0 ? NaN : Number(trimmed);

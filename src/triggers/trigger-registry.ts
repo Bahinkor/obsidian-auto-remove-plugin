@@ -1,6 +1,6 @@
-import type { AutoRemoveSettings, TriggerId } from '../domain/types';
-import type { SettingsStore } from '../settings/settings-store';
-import type { CleanupTrigger } from './trigger';
+import type { AutoRemoveSettings, TriggerId } from "../domain/types";
+import type { SettingsStore } from "../settings/settings-store";
+import type { CleanupTrigger } from "./trigger";
 
 /** Builds a trigger on demand. Registering a new kind means adding one entry. */
 export type TriggerFactory = () => CleanupTrigger;
