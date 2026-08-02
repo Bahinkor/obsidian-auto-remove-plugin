@@ -1,12 +1,12 @@
-import { parseTtlDays } from '../expiration';
-import type { FileSnapshot, RemovalAction } from '../types';
-import { ABSTAIN, EXEMPT, expire } from './policy-source';
-import type { PolicySource, PolicyVerdict } from './policy-source';
+import { parseTtlDays } from "../expiration";
+import type { FileSnapshot, RemovalAction } from "../types";
+import { ABSTAIN, EXEMPT, expire } from "./policy-source";
+import type { PolicySource, PolicyVerdict } from "./policy-source";
 
 /** The frontmatter key a note uses to opt in or out. */
-export const OPT_IN_PROPERTY = 'auto-remove';
+export const OPT_IN_PROPERTY = "auto-remove";
 /** The frontmatter key holding a per-note TTL, in days. */
-export const TTL_PROPERTY = 'ttl';
+export const TTL_PROPERTY = "ttl";
 
 /** Frontmatter properties Auto Remove owns, stripped from a file after a move. */
 export const MANAGED_PROPERTIES: readonly string[] = [OPT_IN_PROPERTY, TTL_PROPERTY];
@@ -42,7 +42,7 @@ export interface FrontmatterPolicyDefaults {
  * claim it on its own terms, with the folder's TTL rather than the note's.
  */
 export class FrontmatterPolicySource implements PolicySource {
-  readonly id = 'frontmatter';
+  readonly id = "frontmatter";
 
   constructor(private readonly defaults: FrontmatterPolicyDefaults) {}
 
@@ -57,13 +57,13 @@ export class FrontmatterPolicySource implements PolicySource {
     return expire({
       ttlDays: parseTtlDays(frontmatter[TTL_PROPERTY]) ?? this.defaults.ttlDays,
       action: this.defaults.action,
-      origin: { source: 'frontmatter' },
+      origin: { source: "frontmatter" },
     });
   }
 }
 
-const TRUTHY = new Set(['true', 'yes', 'on']);
-const FALSY = new Set(['false', 'no', 'off']);
+const TRUTHY = new Set(["true", "yes", "on"]);
+const FALSY = new Set(["false", "no", "off"]);
 
 /**
  * Reads the opt-in property as a deliberate yes, a deliberate no, or nothing.
@@ -75,8 +75,8 @@ const FALSY = new Set(['false', 'no', 'off']);
  * all rather than guessed at in either direction.
  */
 export function readOptIn(value: unknown): boolean | null {
-  if (typeof value === 'boolean') return value;
-  if (typeof value !== 'string') return null;
+  if (typeof value === "boolean") return value;
+  if (typeof value !== "string") return null;
 
   const normalized = value.trim().toLowerCase();
   if (TRUTHY.has(normalized)) return true;

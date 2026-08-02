@@ -1,7 +1,7 @@
-import type { ExpiredFile } from '../domain/types';
-import type { PolicyResolver } from '../domain/policy/policy-resolver';
-import type { ExpirationScanner } from './expiration-scanner';
-import type { ActionFailure, FileActions, FileWatcher, OpenFileTracker } from './ports';
+import type { ExpiredFile } from "../domain/types";
+import type { PolicyResolver } from "../domain/policy/policy-resolver";
+import type { ExpirationScanner } from "./expiration-scanner";
+import type { ActionFailure, FileActions, FileWatcher, OpenFileTracker } from "./ports";
 
 export interface PendingActionsOptions {
   readonly scanner: ExpirationScanner;
@@ -96,7 +96,7 @@ export class PendingActions {
 
 /** Applies an expired file's action. Shared with the immediate execution path. */
 export async function executeAction(actions: FileActions, item: ExpiredFile): Promise<void> {
-  if (item.policy.action.kind === 'trash') {
+  if (item.policy.action.kind === "trash") {
     await actions.trash(item.file.path);
     return;
   }

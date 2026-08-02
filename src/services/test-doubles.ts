@@ -1,6 +1,6 @@
-import { parentFolder, joinPath, splitExtension } from '../domain/vault-path';
-import type { FileSnapshot } from '../domain/types';
-import type { FileActions, FileRepository, FileWatcher, OpenFileTracker } from './ports';
+import { parentFolder, joinPath, splitExtension } from "../domain/vault-path";
+import type { FileSnapshot } from "../domain/types";
+import type { FileActions, FileRepository, FileWatcher, OpenFileTracker } from "./ports";
 
 /**
  * In-memory stand-ins for the vault, used by the service tests.
@@ -31,7 +31,7 @@ export class FakeVault implements FileRepository, FileActions {
     const { suffix } = splitExtension(file.path);
     this.files.set(file.path, {
       path: file.path,
-      extension: suffix.replace(/^\./, ''),
+      extension: suffix.replace(/^\./, ""),
       mtime: file.mtime,
       frontmatter: file.frontmatter ?? null,
     });
@@ -72,7 +72,7 @@ export class FakeVault implements FileRepository, FileActions {
   }
 
   private availablePath(destination: string, sourcePath: string): string {
-    const name = sourcePath.slice(parentFolder(sourcePath).length).replace(/^\//, '');
+    const name = sourcePath.slice(parentFolder(sourcePath).length).replace(/^\//, "");
     const { stem, suffix } = splitExtension(name);
 
     let candidate = joinPath(destination, name);

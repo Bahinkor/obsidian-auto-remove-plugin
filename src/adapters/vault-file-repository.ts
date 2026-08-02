@@ -1,10 +1,10 @@
-import { TFile } from 'obsidian';
-import type { App } from 'obsidian';
-import type { FileSnapshot } from '../domain/types';
-import type { FileRepository } from '../services/ports';
+import { TFile } from "obsidian";
+import type { App } from "obsidian";
+import type { FileSnapshot } from "../domain/types";
+import type { FileRepository } from "../services/ports";
 
 /** Only Markdown files can carry the frontmatter Auto Remove reads. */
-const MARKDOWN_EXTENSION = 'md';
+const MARKDOWN_EXTENSION = "md";
 
 /**
  * Reads the vault through Obsidian's caches.

@@ -1,0 +1,29 @@
+.auto-remove-rule {
+  margin-bottom: var(--size-4-4);
+  padding: 0 var(--size-4-3);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background-color: var(--background-primary-alt);
+}
+
+.auto-remove-rule .setting-item:last-child {
+  border-bottom: none;
+}
+
+.auto-remove-rule__patterns textarea {
+  width: 100%;
+  min-width: 15rem;
+  font-family: var(--font-monospace);
+  resize: vertical;
+}
+
+.auto-remove-rule__error {
+  display: none;
+  padding: var(--size-2-2) 0;
+  color: var(--text-error);
+  font-size: var(--font-ui-smaller);
+}
+
+.auto-remove-rule__error.is-visible {
+  display: block;
+}

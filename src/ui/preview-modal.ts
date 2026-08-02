@@ -1,10 +1,10 @@
-import { Modal, Setting } from 'obsidian';
-import type { App } from 'obsidian';
-import { buildTree, collapseSingleChildFolders } from '../domain/file-tree';
-import type { ExpiredFile } from '../domain/types';
-import { pluralize } from './format';
-import { TreeSelection } from './tree-selection';
-import { TreeView } from './tree-view';
+import { Modal, Setting } from "obsidian";
+import type { App } from "obsidian";
+import { buildTree, collapseSingleChildFolders } from "../domain/file-tree";
+import type { ExpiredFile } from "../domain/types";
+import { pluralize } from "./format";
+import { TreeSelection } from "./tree-selection";
+import { TreeView } from "./tree-view";
 
 /**
  * Asks the user to confirm what Auto Remove is about to do.
@@ -46,8 +46,8 @@ export class CleanupPreviewModal extends Modal {
   }
 
   override onOpen(): void {
-    this.setTitle('Expired files');
-    this.modalEl.addClass('auto-remove-modal');
+    this.setTitle("Expired files");
+    this.modalEl.addClass("auto-remove-modal");
 
     this.renderSummary();
     this.renderTree();
@@ -63,15 +63,15 @@ export class CleanupPreviewModal extends Modal {
   }
 
   private renderSummary(): void {
-    const intro = this.contentEl.createDiv({ cls: 'auto-remove-modal__intro' });
-    intro.createEl('p', {
-      text: `${pluralize(this.items.length, 'file')} reached the end of their time to live.`,
+    const intro = this.contentEl.createDiv({ cls: "auto-remove-modal__intro" });
+    intro.createEl("p", {
+      text: `${pluralize(this.items.length, "file")} reached the end of their time to live.`,
     });
-    this.summaryEl = intro.createEl('p', { cls: 'auto-remove-modal__summary' });
+    this.summaryEl = intro.createEl("p", { cls: "auto-remove-modal__summary" });
   }
 
   private renderTree(): void {
-    const host = this.contentEl.createDiv({ cls: 'auto-remove-tree' });
+    const host = this.contentEl.createDiv({ cls: "auto-remove-tree" });
     const view = new TreeView(host, {
       selection: this.selection,
       openPaths: this.openPaths,
@@ -80,11 +80,11 @@ export class CleanupPreviewModal extends Modal {
     view.render(this.tree);
 
     new Setting(this.contentEl)
-      .setClass('auto-remove-modal__bulk')
+      .setClass("auto-remove-modal__bulk")
       .addExtraButton((button) =>
         button
-          .setIcon('check-square')
-          .setTooltip('Select all')
+          .setIcon("check-square")
+          .setTooltip("Select all")
           .onClick(() => {
             this.selection.setSubtree(this.tree, true);
             view.refresh();
@@ -93,8 +93,8 @@ export class CleanupPreviewModal extends Modal {
       )
       .addExtraButton((button) =>
         button
-          .setIcon('square')
-          .setTooltip('Select none')
+          .setIcon("square")
+          .setTooltip("Select none")
           .onClick(() => {
             this.selection.setSubtree(this.tree, false);
             view.refresh();
@@ -105,11 +105,11 @@ export class CleanupPreviewModal extends Modal {
 
   private renderControls(): void {
     new Setting(this.contentEl)
-      .addButton((button) => button.setButtonText('Cancel').onClick(() => this.close()))
+      .addButton((button) => button.setButtonText("Cancel").onClick(() => this.close()))
       .addButton((button) => {
         this.confirmButton = button.buttonEl;
         button
-          .setButtonText('Remove selected')
+          .setButtonText("Remove selected")
           .setCta()
           .onClick(() => {
             this.confirmed = this.selectedItems();
@@ -129,9 +129,9 @@ export class CleanupPreviewModal extends Modal {
     ).length;
 
     if (this.summaryEl !== null) {
-      const parts = [`${pluralize(selected, 'file')} selected`];
+      const parts = [`${pluralize(selected, "file")} selected`];
       if (deferred > 0) parts.push(`${deferred} open and will run after closing`);
-      this.summaryEl.setText(parts.join(' · '));
+      this.summaryEl.setText(parts.join(" · "));
     }
 
     if (this.confirmButton !== null) this.confirmButton.disabled = selected === 0;

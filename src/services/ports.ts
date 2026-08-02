@@ -1,4 +1,4 @@
-import type { ExpiredFile, FileSnapshot, RemovalAction } from '../domain/types';
+import type { ExpiredFile, FileSnapshot, RemovalAction } from "../domain/types";
 
 /**
  * The seams between the cleanup logic and the vault it acts on.

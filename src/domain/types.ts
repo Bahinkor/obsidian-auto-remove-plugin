@@ -16,10 +16,9 @@ export const MILLISECONDS_PER_DAY = 86_400_000;
  * type at the boundary; see {@link ../settings/settings-store}.
  */
 export type RemovalAction =
-  | { readonly kind: 'trash' }
-  | { readonly kind: 'move'; readonly destination: string };
+  { readonly kind: "trash" } | { readonly kind: "move"; readonly destination: string };
 
-export type RemovalActionKind = RemovalAction['kind'];
+export type RemovalActionKind = RemovalAction["kind"];
 
 /** An immutable view of a vault file, sufficient to decide its fate. */
 export interface FileSnapshot {
@@ -35,8 +34,8 @@ export interface FileSnapshot {
 
 /** Explains which rule claimed a file, so the preview can show its provenance. */
 export type PolicyOrigin =
-  | { readonly source: 'frontmatter' }
-  | { readonly source: 'folder-rule'; readonly ruleId: string; readonly folder: string };
+  | { readonly source: "frontmatter" }
+  | { readonly source: "folder-rule"; readonly ruleId: string; readonly folder: string };
 
 /** The decision a {@link PolicySource} reached about a file. */
 export interface ExpirationPolicy {
@@ -71,7 +70,7 @@ export interface FolderRule {
 }
 
 /** Identifies an automatic cleanup trigger. Manual runs are commands, not triggers. */
-export type TriggerId = 'startup';
+export type TriggerId = "startup";
 
 /** The persisted plugin configuration. */
 export interface AutoRemoveSettings {

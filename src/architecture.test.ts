@@ -1,6 +1,6 @@
-import { readdirSync, readFileSync, statSync } from 'node:fs';
-import { join } from 'node:path';
-import { describe, expect, it } from 'vitest';
+import { readdirSync, readFileSync, statSync } from "node:fs";
+import { join } from "node:path";
+import { describe, expect, it } from "vitest";
 
 /**
  * Guards the layering the whole design rests on.
@@ -12,7 +12,7 @@ import { describe, expect, it } from 'vitest';
  */
 
 const SOURCE_ROOT = join(__dirname);
-const OBSIDIAN_FREE_LAYERS = ['domain', 'services', 'settings'];
+const OBSIDIAN_FREE_LAYERS = ["domain", "services", "settings"];
 
 function sourceFilesIn(directory: string): string[] {
   const found: string[] = [];
@@ -21,7 +21,7 @@ function sourceFilesIn(directory: string): string[] {
     const path = join(directory, entry);
     if (statSync(path).isDirectory()) {
       found.push(...sourceFilesIn(path));
-    } else if (entry.endsWith('.ts')) {
+    } else if (entry.endsWith(".ts")) {
       found.push(path);
     }
   }
@@ -30,11 +30,11 @@ function sourceFilesIn(directory: string): string[] {
 }
 
 function importsObsidian(path: string): boolean {
-  return /from\s+['"]obsidian['"]/.test(readFileSync(path, 'utf8'));
+  return /from\s+['"]obsidian['"]/.test(readFileSync(path, "utf8"));
 }
 
-describe('layering', () => {
-  it.each(OBSIDIAN_FREE_LAYERS)('src/%s does not depend on the Obsidian API', (layer) => {
+describe("layering", () => {
+  it.each(OBSIDIAN_FREE_LAYERS)("src/%s does not depend on the Obsidian API", (layer) => {
     const offenders = sourceFilesIn(join(SOURCE_ROOT, layer))
       .filter(importsObsidian)
       .map((path) => path.slice(SOURCE_ROOT.length + 1));
@@ -42,7 +42,7 @@ describe('layering', () => {
     expect(offenders).toEqual([]);
   });
 
-  it('finds the source files it claims to be checking', () => {
+  it("finds the source files it claims to be checking", () => {
     // A typo in the directory list would make the check above pass vacuously.
     for (const layer of OBSIDIAN_FREE_LAYERS) {
       expect(sourceFilesIn(join(SOURCE_ROOT, layer)).length).toBeGreaterThan(0);

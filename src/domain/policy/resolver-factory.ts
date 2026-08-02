@@ -1,10 +1,10 @@
-import { toRemovalAction } from '../removal-action';
-import type { AutoRemoveSettings, FolderRule } from '../types';
-import { FolderRulePolicySource } from './folder-rule-policy-source';
-import type { FolderRuleBinding } from './folder-rule-policy-source';
-import { FrontmatterPolicySource } from './frontmatter-policy-source';
-import { PolicyResolver } from './policy-resolver';
-import type { PolicySource } from './policy-source';
+import { toRemovalAction } from "../removal-action";
+import type { AutoRemoveSettings, FolderRule } from "../types";
+import { FolderRulePolicySource } from "./folder-rule-policy-source";
+import type { FolderRuleBinding } from "./folder-rule-policy-source";
+import { FrontmatterPolicySource } from "./frontmatter-policy-source";
+import { PolicyResolver } from "./policy-resolver";
+import type { PolicySource } from "./policy-source";
 
 /**
  * Composes the policy chain for one cleanup run.
@@ -19,7 +19,10 @@ import type { PolicySource } from './policy-source';
 export function createPolicyResolver(settings: AutoRemoveSettings): PolicyResolver {
   const sources: PolicySource[] = [];
 
-  const frontmatterAction = toRemovalAction(settings.defaultAction, settings.defaultMoveDestination);
+  const frontmatterAction = toRemovalAction(
+    settings.defaultAction,
+    settings.defaultMoveDestination,
+  );
   if (frontmatterAction !== null) {
     sources.push(
       new FrontmatterPolicySource({

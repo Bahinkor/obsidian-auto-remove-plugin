@@ -1,8 +1,8 @@
-import { collectFilePaths } from '../domain/file-tree';
-import type { TreeNode } from '../domain/file-tree';
+import { collectFilePaths } from "../domain/file-tree";
+import type { TreeNode } from "../domain/file-tree";
 
 /** A folder is partially selected when only some of its descendants are. */
-export type SelectionState = 'checked' | 'unchecked' | 'partial';
+export type SelectionState = "checked" | "unchecked" | "partial";
 
 /**
  * Tracks which files the user has left selected in the preview dialog.
@@ -46,13 +46,13 @@ export class TreeSelection {
   }
 
   stateOf(node: TreeNode): SelectionState {
-    if (node.kind === 'file') return this.isSelected(node.path) ? 'checked' : 'unchecked';
+    if (node.kind === "file") return this.isSelected(node.path) ? "checked" : "unchecked";
 
     const paths = collectFilePaths(node);
-    if (paths.length === 0) return 'unchecked';
+    if (paths.length === 0) return "unchecked";
 
     const selectedCount = paths.filter((path) => this.selected.has(path)).length;
-    if (selectedCount === 0) return 'unchecked';
-    return selectedCount === paths.length ? 'checked' : 'partial';
+    if (selectedCount === 0) return "unchecked";
+    return selectedCount === paths.length ? "checked" : "partial";
   }
 }

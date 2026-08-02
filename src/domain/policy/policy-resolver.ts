@@ -1,5 +1,5 @@
-import type { ExpirationPolicy, FileSnapshot } from '../types';
-import type { PolicySource } from './policy-source';
+import type { ExpirationPolicy, FileSnapshot } from "../types";
+import type { PolicySource } from "./policy-source";
 
 /**
  * Applies policy sources in priority order and returns the first verdict.
@@ -17,8 +17,8 @@ export class PolicyResolver {
   resolve(file: FileSnapshot): ExpirationPolicy | null {
     for (const source of this.sources) {
       const verdict = source.resolve(file);
-      if (verdict.kind === 'exempt') return null;
-      if (verdict.kind === 'expire') return verdict.policy;
+      if (verdict.kind === "exempt") return null;
+      if (verdict.kind === "expire") return verdict.policy;
     }
     return null;
   }

@@ -1,12 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "ES2021",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "lib": ["DOM", "ES2021"],
     "types": ["node"],
-
     "strict": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
@@ -15,12 +13,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "exactOptionalPropertyTypes": true,
-
     "isolatedModules": true,
     "allowJs": true,
     "skipLibCheck": true,
     "inlineSourceMap": true,
     "inlineSources": true
   },
-  "include": ["src/**/*.ts", "vitest.config.ts"]
+  "include": ["./src/**/*.ts", "./vitest.config.ts"]
 }

@@ -1,7 +1,7 @@
-import { isExpired, toExpiredFile } from '../domain/expiration';
-import type { PolicyResolver } from '../domain/policy/policy-resolver';
-import type { ExpiredFile } from '../domain/types';
-import type { Clock, FileRepository } from './ports';
+import { isExpired, toExpiredFile } from "../domain/expiration";
+import type { PolicyResolver } from "../domain/policy/policy-resolver";
+import type { ExpiredFile } from "../domain/types";
+import type { Clock, FileRepository } from "./ports";
 
 /**
  * Finds every file that has outlived its TTL.
