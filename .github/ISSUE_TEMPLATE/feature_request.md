@@ -1,9 +1,9 @@
 ---
-name: "پیشنهاد"
-about: "ویژگی‌ای که تصور می‌کنی جاش توی پلاگین خالیه"
+name: "Feature Request"
+about: "Suggest a feature or improvement for the plugin"
 title: ""
 labels: "Feature Request"
 assignees: ""
 ---
 
-### توصیف
+### Description

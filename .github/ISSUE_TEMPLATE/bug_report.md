@@ -1,14 +1,14 @@
 ---
-name: "گزارش مشکل در پلاگین"
-about: "باگ یا مشکلی در عملکرد پلاگین"
+name: "Bug Report"
+about: "Report a bug or issue with the plugin"
 title: ""
 labels: "Bug Report"
 assignees: ""
 ---
 
-### محیط کاربری
+### User Environment
 
-- ورژن ابسیدین:
-- ورژن پلاگین:
+- Obsidian version:
+- Plugin version:
 
-### توصیف مشکل
+### Problem Description
