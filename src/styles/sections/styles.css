@@ -1,0 +1,167 @@
+/*
+ * Auto Remove
+ *
+ * Everything is expressed with Obsidian's CSS variables so the plugin follows
+ * whichever theme the user has chosen, in both light and dark mode.
+ */
+
+/* ---------------------------------------------------------------- Preview -- */
+
+.auto-remove-modal {
+  --auto-remove-indent: 1.35em;
+  --auto-remove-guide: var(--background-modifier-border);
+  max-width: min(44rem, 90vw);
+}
+
+.auto-remove-modal__intro p {
+  margin: 0 0 var(--size-2-2);
+}
+
+.auto-remove-modal__summary {
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+}
+
+.auto-remove-modal__bulk {
+  border-top: none;
+  padding-top: 0;
+}
+
+/* --------------------------------------------------------------- The tree -- */
+
+.auto-remove-tree {
+  max-height: 45vh;
+  overflow: auto;
+  padding: var(--size-4-2);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background-color: var(--background-primary-alt);
+}
+
+/*
+ * Nested children are indented and carry a vertical guide, which reproduces the
+ * `│` spine of a terminal tree without box-drawing characters — those never
+ * line up once checkboxes and proportional fonts are involved.
+ */
+.auto-remove-tree__node > .auto-remove-tree__children {
+  margin-left: calc(var(--auto-remove-indent) / 2);
+  padding-left: calc(var(--auto-remove-indent) / 2);
+  border-left: 1px solid var(--auto-remove-guide);
+}
+
+.auto-remove-tree__row {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2-2);
+  padding: var(--size-2-1) 0;
+  min-height: 1.75em;
+}
+
+.auto-remove-tree__row::before {
+  content: '';
+  flex: 0 0 calc(var(--auto-remove-indent) / 2);
+  height: 1px;
+  background-color: var(--auto-remove-guide);
+  margin-left: calc(var(--auto-remove-indent) / -2);
+}
+
+/* The outermost rows hang off the container edge, so they need no connector. */
+.auto-remove-tree > .auto-remove-tree__children > .auto-remove-tree__node > .auto-remove-tree__row::before {
+  background-color: transparent;
+}
+
+.auto-remove-tree__checkbox {
+  flex: none;
+  margin: 0;
+}
+
+.auto-remove-tree__label {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2-2);
+  min-width: 0;
+  cursor: pointer;
+}
+
+.auto-remove-tree__icon {
+  display: flex;
+  color: var(--text-faint);
+}
+
+.auto-remove-tree__icon .svg-icon {
+  width: var(--icon-s);
+  height: var(--icon-s);
+}
+
+.auto-remove-tree__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.auto-remove-tree__node.mod-folder > .auto-remove-tree__row .auto-remove-tree__name {
+  font-weight: var(--font-semibold);
+}
+
+/* Details sit to the right and are the first thing sacrificed on narrow screens. */
+.auto-remove-tree__details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--size-2-2);
+  margin-left: auto;
+  padding-left: var(--size-4-2);
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+}
+
+.auto-remove-tree__detail.mod-action,
+.auto-remove-tree__detail.mod-deferred {
+  padding: 0 var(--size-2-2);
+  border-radius: var(--radius-s);
+  background-color: var(--background-modifier-hover);
+}
+
+.auto-remove-tree__detail.mod-deferred {
+  color: var(--text-accent);
+  background-color: var(--background-modifier-border);
+}
+
+@media (max-width: 40rem) {
+  .auto-remove-tree__detail.mod-origin,
+  .auto-remove-tree__detail.mod-action {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------- Settings -- */
+
+.auto-remove-rule {
+  margin-bottom: var(--size-4-4);
+  padding: 0 var(--size-4-3);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background-color: var(--background-primary-alt);
+}
+
+.auto-remove-rule .setting-item:last-child {
+  border-bottom: none;
+}
+
+.auto-remove-rule__patterns textarea {
+  width: 100%;
+  min-width: 15rem;
+  font-family: var(--font-monospace);
+  resize: vertical;
+}
+
+.auto-remove-rule__error {
+  display: none;
+  padding: var(--size-2-2) 0;
+  color: var(--text-error);
+  font-size: var(--font-ui-smaller);
+}
+
+.auto-remove-rule__error.is-visible {
+  display: block;
+}
