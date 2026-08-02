@@ -9,21 +9,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev          # esbuild watch → main.js (what you leave running while developing)
-npm run build        # tsc --noEmit --skipLibCheck, then a minified production bundle
-npm test             # vitest run
-npm run test:watch   # vitest in watch mode
-npm run lint         # eslint, including eslint-plugin-obsidianmd
+pnpm run dev          # esbuild watch → main.js (what you leave running while developing)
+pnpm run build        # tsc --noEmit --skipLibCheck, then a minified production bundle
+pnpm test             # vitest run
+pnpm run test:watch   # vitest in watch mode
+pnpm run lint         # eslint, including eslint-plugin-obsidianmd
 ```
 
 Run a single test file or a single case:
 
 ```bash
-npx vitest run src/domain/policy/policy.test.ts
-npx vitest run -t "lets an explicit opt-out veto the folder rule covering it"
+pnpx vitest run src/domain/policy/policy.test.ts
+pnpx vitest run -t "lets an explicit opt-out veto the folder rule covering it"
 ```
 
-Note that `npm run build` type-checks *and* bundles; `npx tsc --noEmit --skipLibCheck` alone is the faster loop when you only want types.
+Note that `pnpm run build` type-checks *and* bundles; `pnpx tsc --noEmit --skipLibCheck` alone is the faster loop when you only want types.
 
 To try the plugin in a real vault, symlink or copy `main.js`, `manifest.json` and `styles.css` into `<vault>/.obsidian/plugins/auto-remove/`. `main.js` is gitignored — it is a build artifact attached to releases, never committed.
 
