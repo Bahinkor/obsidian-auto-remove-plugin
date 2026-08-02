@@ -1,7 +1,7 @@
-import type { ExpiredFile } from '../domain/types';
-import { executeAction } from './pending-actions';
-import type { PendingActions } from './pending-actions';
-import type { ActionFailure, CleanupResult, FileActions, OpenFileTracker } from './ports';
+import type { ExpiredFile } from "../domain/types";
+import { executeAction } from "./pending-actions";
+import type { PendingActions } from "./pending-actions";
+import type { ActionFailure, CleanupResult, FileActions, OpenFileTracker } from "./ports";
 
 /**
  * Carries out a confirmed set of removals and reports what happened.

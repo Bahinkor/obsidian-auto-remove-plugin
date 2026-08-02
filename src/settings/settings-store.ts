@@ -1,5 +1,5 @@
-import type { AutoRemoveSettings } from '../domain/types';
-import { parseSettings } from './settings-schema';
+import type { AutoRemoveSettings } from "../domain/types";
+import { parseSettings } from "./settings-schema";
 
 /**
  * The persistence surface this store needs. Obsidian's `Plugin` satisfies it

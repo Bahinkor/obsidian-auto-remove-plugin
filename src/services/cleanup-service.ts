@@ -1,8 +1,8 @@
-import type { PolicyResolver } from '../domain/policy/policy-resolver';
-import type { ExpiredFile } from '../domain/types';
-import type { ActionExecutor } from './action-executor';
-import type { ExpirationScanner } from './expiration-scanner';
-import type { CleanupResult, OpenFileTracker } from './ports';
+import type { PolicyResolver } from "../domain/policy/policy-resolver";
+import type { ExpiredFile } from "../domain/types";
+import type { ActionExecutor } from "./action-executor";
+import type { ExpirationScanner } from "./expiration-scanner";
+import type { CleanupResult, OpenFileTracker } from "./ports";
 
 /**
  * Decides which expired files the user confirmed.
@@ -18,10 +18,10 @@ export type PreviewGate = (
 
 /** How a run ended, so callers can report it appropriately. */
 export type CleanupOutcome =
-  | { readonly status: 'nothing-expired' }
-  | { readonly status: 'cancelled' }
-  | { readonly status: 'already-running' }
-  | { readonly status: 'completed'; readonly result: CleanupResult };
+  | { readonly status: "nothing-expired" }
+  | { readonly status: "cancelled" }
+  | { readonly status: "already-running" }
+  | { readonly status: "completed"; readonly result: CleanupResult };
 
 export interface CleanupServiceOptions {
   readonly scanner: ExpirationScanner;
@@ -50,17 +50,17 @@ export class CleanupService {
    * run would show a preview listing files the first run is already deleting.
    */
   async run(): Promise<CleanupOutcome> {
-    if (this.running) return { status: 'already-running' };
+    if (this.running) return { status: "already-running" };
     this.running = true;
 
     try {
       const expired = this.options.scanner.scan(this.options.createResolver());
-      if (expired.length === 0) return { status: 'nothing-expired' };
+      if (expired.length === 0) return { status: "nothing-expired" };
 
       const confirmed = await this.options.preview(expired, this.options.openFiles.getOpenPaths());
-      if (confirmed === null || confirmed.length === 0) return { status: 'cancelled' };
+      if (confirmed === null || confirmed.length === 0) return { status: "cancelled" };
 
-      return { status: 'completed', result: await this.options.executor.execute(confirmed) };
+      return { status: "completed", result: await this.options.executor.execute(confirmed) };
     } finally {
       this.running = false;
     }

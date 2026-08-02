@@ -1,5 +1,5 @@
-import type { RemovalAction, RemovalActionKind } from './types';
-import { normalizeFolder } from './vault-path';
+import type { RemovalAction, RemovalActionKind } from "./types";
+import { normalizeFolder } from "./vault-path";
 
 /**
  * Bridges the flat shape settings persist (`action` + `moveDestination`) and
@@ -13,12 +13,12 @@ export function toRemovalAction(
   kind: RemovalActionKind,
   destination: string,
 ): RemovalAction | null {
-  if (kind === 'trash') return { kind: 'trash' };
+  if (kind === "trash") return { kind: "trash" };
   const folder = normalizeFolder(destination);
-  return folder.length === 0 ? null : { kind: 'move', destination: folder };
+  return folder.length === 0 ? null : { kind: "move", destination: folder };
 }
 
 /** A short label for the action, for use in the preview dialog. */
 export function describeAction(action: RemovalAction): string {
-  return action.kind === 'trash' ? 'Trash' : `Move to ${action.destination}`;
+  return action.kind === "trash" ? "Trash" : `Move to ${action.destination}`;
 }

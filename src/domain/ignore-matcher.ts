@@ -1,4 +1,4 @@
-import ignore from 'ignore';
+import ignore from "ignore";
 
 /**
  * Gitignore-style path matching.
@@ -28,7 +28,7 @@ export function createIgnoreMatcher(patterns: readonly string[]): IgnoreMatcher 
     ignores(relativePath) {
       // `ignore` rejects absolute paths and the empty string outright, and a
       // malformed user pattern should never take a cleanup run down with it.
-      if (relativePath.length === 0 || relativePath.startsWith('/')) return false;
+      if (relativePath.length === 0 || relativePath.startsWith("/")) return false;
       return instance.ignores(relativePath);
     },
   };
@@ -40,7 +40,7 @@ export function createIgnoreMatcher(patterns: readonly string[]): IgnoreMatcher 
  */
 export function isMeaningfulPattern(pattern: string): boolean {
   const trimmed = pattern.trim();
-  return trimmed.length > 0 && !trimmed.startsWith('#');
+  return trimmed.length > 0 && !trimmed.startsWith("#");
 }
 
 /**
@@ -56,6 +56,6 @@ export function validateIgnorePattern(pattern: string): string | null {
     ignore().add(pattern.trim());
     return null;
   } catch {
-    return 'This is not a valid ignore pattern.';
+    return "This is not a valid ignore pattern.";
   }
 }

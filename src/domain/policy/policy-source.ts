@@ -1,4 +1,4 @@
-import type { ExpirationPolicy, FileSnapshot } from '../types';
+import type { ExpirationPolicy, FileSnapshot } from "../types";
 
 /**
  * What a {@link PolicySource} concluded about a file.
@@ -11,19 +11,19 @@ import type { ExpirationPolicy, FileSnapshot } from '../types';
  * useless exactly when someone reaches for it.
  */
 export type PolicyVerdict =
-  | { readonly kind: 'expire'; readonly policy: ExpirationPolicy }
-  | { readonly kind: 'exempt' }
-  | { readonly kind: 'abstain' };
+  | { readonly kind: "expire"; readonly policy: ExpirationPolicy }
+  | { readonly kind: "exempt" }
+  | { readonly kind: "abstain" };
 
 /** "I have no opinion" — the next source decides. */
-export const ABSTAIN: PolicyVerdict = { kind: 'abstain' };
+export const ABSTAIN: PolicyVerdict = { kind: "abstain" };
 
 /** "Leave this file alone" — no later source may claim it. */
-export const EXEMPT: PolicyVerdict = { kind: 'exempt' };
+export const EXEMPT: PolicyVerdict = { kind: "exempt" };
 
 /** "This file expires under these terms." */
 export function expire(policy: ExpirationPolicy): PolicyVerdict {
-  return { kind: 'expire', policy };
+  return { kind: "expire", policy };
 }
 
 /**

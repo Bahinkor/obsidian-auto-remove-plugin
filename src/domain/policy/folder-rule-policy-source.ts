@@ -1,9 +1,9 @@
-import { createIgnoreMatcher } from '../ignore-matcher';
-import type { IgnoreMatcher } from '../ignore-matcher';
-import { depth, isInsideFolder, relativeToFolder } from '../vault-path';
-import type { FileSnapshot, FolderRule, RemovalAction } from '../types';
-import { ABSTAIN, EXEMPT, expire } from './policy-source';
-import type { PolicySource, PolicyVerdict } from './policy-source';
+import { createIgnoreMatcher } from "../ignore-matcher";
+import type { IgnoreMatcher } from "../ignore-matcher";
+import { depth, isInsideFolder, relativeToFolder } from "../vault-path";
+import type { FileSnapshot, FolderRule, RemovalAction } from "../types";
+import { ABSTAIN, EXEMPT, expire } from "./policy-source";
+import type { PolicySource, PolicyVerdict } from "./policy-source";
 
 /**
  * A rule paired with the action it resolved to.
@@ -38,7 +38,7 @@ interface CompiledRule extends FolderRuleBinding {
  * Unlike frontmatter, this source is happy to claim non-Markdown files.
  */
 export class FolderRulePolicySource implements PolicySource {
-  readonly id = 'folder-rule';
+  readonly id = "folder-rule";
 
   private readonly rules: readonly CompiledRule[];
 
@@ -61,7 +61,7 @@ export class FolderRulePolicySource implements PolicySource {
         ttlDays: compiled.rule.ttlDays,
         action: compiled.action,
         origin: {
-          source: 'folder-rule',
+          source: "folder-rule",
           ruleId: compiled.rule.id,
           folder: compiled.rule.folder,
         },

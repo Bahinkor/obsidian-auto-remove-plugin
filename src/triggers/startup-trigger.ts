@@ -1,5 +1,5 @@
-import type { Workspace } from 'obsidian';
-import type { CleanupTrigger, RunCleanup } from './trigger';
+import type { Workspace } from "obsidian";
+import type { CleanupTrigger, RunCleanup } from "./trigger";
 
 /**
  * Runs a cleanup once the workspace has finished loading.
@@ -9,7 +9,7 @@ import type { CleanupTrigger, RunCleanup } from './trigger';
  * would happily offer to delete the note the user is looking at.
  */
 export class StartupTrigger implements CleanupTrigger {
-  readonly id = 'startup';
+  readonly id = "startup";
 
   constructor(
     private readonly workspace: Workspace,

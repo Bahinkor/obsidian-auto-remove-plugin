@@ -70,9 +70,7 @@
   white-space: nowrap;
 }
 
-.auto-remove-tree__node.mod-folder
-  > .auto-remove-tree__row
-  .auto-remove-tree__name {
+.auto-remove-tree__node.mod-folder > .auto-remove-tree__row .auto-remove-tree__name {
   font-weight: var(--font-semibold);
 }
 

@@ -1,9 +1,9 @@
-import { normalizePath, TFolder } from 'obsidian';
-import type { App, TFile } from 'obsidian';
-import { MANAGED_PROPERTIES } from '../domain/policy/frontmatter-policy-source';
-import { basename, joinPath, splitExtension } from '../domain/vault-path';
-import type { FileActions } from '../services/ports';
-import { requireFile } from './vault-file-repository';
+import { normalizePath, TFolder } from "obsidian";
+import type { App, TFile } from "obsidian";
+import { MANAGED_PROPERTIES } from "../domain/policy/frontmatter-policy-source";
+import { basename, joinPath, splitExtension } from "../domain/vault-path";
+import type { FileActions } from "../services/ports";
+import { requireFile } from "./vault-file-repository";
 
 /**
  * Performs removals through Obsidian's own file manager.
@@ -54,7 +54,7 @@ export class VaultFileActions implements FileActions {
    * usual cause, and that is worth surfacing rather than hiding.
    */
   private async releaseFromAutoRemove(file: TFile): Promise<void> {
-    if (file.extension.toLowerCase() !== 'md') return;
+    if (file.extension.toLowerCase() !== "md") return;
 
     await this.app.fileManager.processFrontMatter(file, (frontmatter: Record<string, unknown>) => {
       for (const property of MANAGED_PROPERTIES) delete frontmatter[property];

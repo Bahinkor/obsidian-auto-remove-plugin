@@ -1,6 +1,6 @@
-import { debounce } from 'obsidian';
-import type { App, EventRef, WorkspaceLeaf } from 'obsidian';
-import type { FileWatcher, OpenFileTracker } from '../services/ports';
+import { debounce } from "obsidian";
+import type { App, EventRef, WorkspaceLeaf } from "obsidian";
+import type { FileWatcher, OpenFileTracker } from "../services/ports";
 
 /** Workspace churn is bursty; coalesce it before re-reading every leaf. */
 const CHANGE_DEBOUNCE_MS = 200;
@@ -33,8 +33,8 @@ export class WorkspaceOpenFileTracker implements OpenFileTracker, FileWatcher {
   constructor(private readonly app: App) {
     const { workspace } = app;
     this.eventRefs.push(
-      workspace.on('layout-change', this.notify),
-      workspace.on('active-leaf-change', this.notify),
+      workspace.on("layout-change", this.notify),
+      workspace.on("active-leaf-change", this.notify),
     );
   }
 
@@ -54,12 +54,12 @@ export class WorkspaceOpenFileTracker implements OpenFileTracker, FileWatcher {
 
   onRenamed(listener: (fromPath: string, toPath: string) => void): () => void {
     return this.onVaultEvent(
-      this.app.vault.on('rename', (file, oldPath) => listener(oldPath, file.path)),
+      this.app.vault.on("rename", (file, oldPath) => listener(oldPath, file.path)),
     );
   }
 
   onDeleted(listener: (path: string) => void): () => void {
-    return this.onVaultEvent(this.app.vault.on('delete', (file) => listener(file.path)));
+    return this.onVaultEvent(this.app.vault.on("delete", (file) => listener(file.path)));
   }
 
   /** Releases the workspace subscriptions taken out in the constructor. */
@@ -80,6 +80,6 @@ export class WorkspaceOpenFileTracker implements OpenFileTracker, FileWatcher {
  * file explorer, search, graph view and so on.
  */
 function filePathOf(leaf: WorkspaceLeaf): string | null {
-  const file = leaf.getViewState().state?.['file'];
-  return typeof file === 'string' && file.length > 0 ? file : null;
+  const file = leaf.getViewState().state?.["file"];
+  return typeof file === "string" && file.length > 0 ? file : null;
 }

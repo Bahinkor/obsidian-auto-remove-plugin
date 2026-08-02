@@ -1,5 +1,5 @@
-import { AbstractInputSuggest, TFolder } from 'obsidian';
-import type { App } from 'obsidian';
+import { AbstractInputSuggest, TFolder } from "obsidian";
+import type { App } from "obsidian";
 
 /** More than this and the list stops being a shortcut. */
 const MAX_SUGGESTIONS = 20;
@@ -37,7 +37,7 @@ export class FolderSuggest extends AbstractInputSuggest<TFolder> {
 
   renderSuggestion(folder: TFolder, el: HTMLElement): void {
     // The root folder's path is "/", which reads better spelled out.
-    el.setText(folder.isRoot() ? 'Vault root' : folder.path);
+    el.setText(folder.isRoot() ? "Vault root" : folder.path);
   }
 
   /**
@@ -45,7 +45,7 @@ export class FolderSuggest extends AbstractInputSuggest<TFolder> {
    * base class, so the settings store and the visible text can never disagree.
    */
   override selectSuggestion(folder: TFolder): void {
-    const path = folder.isRoot() ? '' : folder.path;
+    const path = folder.isRoot() ? "" : folder.path;
     this.input.value = path;
     this.handleSelect(path);
     this.close();

@@ -22,24 +22,14 @@ export default tseslint.config(
       },
     },
     rules: {
-      "@typescript-eslint/consistent-type-imports": [
-        "error",
-        { prefer: "type-imports" },
-      ],
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        { argsIgnorePattern: "^_" },
-      ],
+      "@typescript-eslint/consistent-type-imports": ["error", { prefer: "type-imports" }],
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
     },
   },
   {
     // The domain and service layers must stay free of Obsidian so they remain
     // unit-testable without a vault. See docs/ARCHITECTURE.md.
-    files: [
-      "src/domain/**/*.ts",
-      "src/services/**/*.ts",
-      "src/settings/**/*.ts",
-    ],
+    files: ["src/domain/**/*.ts", "src/services/**/*.ts", "src/settings/**/*.ts"],
     rules: {
       "no-restricted-imports": [
         "error",
