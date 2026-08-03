@@ -107,4 +107,20 @@ Templates/**
 صورت تداخل نام، فایل با نام جدید ذخیره خواهد شد. پس از انتقال، ویژگی‌های `auto-remove` و `ttl`
 از Frontmatter حذف می‌شوند تا فایل در محل جدید دوباره وارد چرخهٔ حذف خودکار نشود.
 
+## <a name="collaboration"></a> همراهی و مشارکت در پروژه
+
+این افزونه با عشق و با مقاصد غیرتجاری و تحت [این لایسنس](LICENSE) توسعه داده شده است.
+
+شما می‌توانید به شیوه‌های زیر از ادامه‌ی فعالیت‌های ما حمایت کنید:
+
+- مشارکت در توسعه‌ی این افزونه
+- گزارش خطا یا پیشنهاد یک ویژگی برای توسعه در Issues همین صفحه‌ی گیتهاب
+- پیشنهاد استفاده و نصب این پلاگین به دوستان خود
+- دنبال کردن سایت و کانال تلگرامی کارفکر
+
+<div align=center>
+
+[![Website](https://img.shields.io/badge/Website-karfekr.ir-orange)](https://karfekr.ir)
+[![Telegram Channel](https://img.shields.io/endpoint?color=neon&label=Karfekr&style=flat-square&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fkarfekr)](https://t.me/karfekr)
+
 </div>
