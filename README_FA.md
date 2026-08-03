@@ -1,4 +1,3 @@
-````markdown
 <div dir="ltr" align="center">
 
 [**فارسی**](README_FA.md) / [**English**](README.md)
@@ -109,4 +108,3 @@ Templates/**
 از Frontmatter حذف می‌شوند تا فایل در محل جدید دوباره وارد چرخهٔ حذف خودکار نشود.
 
 </div>
-````
