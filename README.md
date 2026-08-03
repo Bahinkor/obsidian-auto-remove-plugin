@@ -88,3 +88,23 @@ files_ preference — system trash, the vault's `.trash` folder, or permanent de
 **Move** relocates the file to a destination folder, creating it if needed and renaming rather than
 overwriting if something is already there. Afterwards the `auto-remove` and `ttl` properties are
 stripped, so an archived note does not simply expire again from its new home.
+
+## <a name="collaboration"></a> Collaboration and Project Participation
+
+This plugin has been developed with love, for non-commercial purposes, and under
+[this license](LICENSE).
+
+You can support our continued efforts in the following ways:
+
+- Contribute to the development of this plugin
+- Report bugs or suggest a feature for development via the Issues section on this GitHub page
+- Recommend installing and using this plugin to your friends
+- Follow our website and Telegram channel
+
+<div align=center>
+
+[![Website](https://img.shields.io/badge/Website-karfekr.ir-orange)](https://karfekr.ir)
+[![Telegram Channel](https://img.shields.io/endpoint?color=neon&label=Karfekr&style=flat-square&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fkarfekr)](https://t.me/karfekr)
+[![Telegram Group](https://img.shields.io/endpoint?label=ObsidianFarsi&style=flat-square&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2FObsidianFarsi&color=blue)](https://t.me/ObsidianFarsi)
+
+</div>
